@@ -21,7 +21,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.setPage({offset: 0});
-    this.rows = this.dataService.pages[0];
   }
 
   setPage(pageInfo:any){
