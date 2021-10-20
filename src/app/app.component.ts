@@ -14,9 +14,8 @@ export class AppComponent implements OnInit{
 
   constructor(private dataService:DataService){
     this.page.pageNumber = 0;
-    this.page.size = 2;
+    this.page.size = 3;
     this.page.totalElements = 8;
-    console.log('constructor called');
   }
 
   ngOnInit(){
@@ -25,8 +24,7 @@ export class AppComponent implements OnInit{
 
   setPage(pageInfo:any){
     this.page.pageNumber = pageInfo.offset;
-    console.log("offset of selected page: " + pageInfo.offset);
-
+    console.log("offset of selected page: "+pageInfo.offset)
     this.dataService.getPage(this.page.pageNumber).subscribe( data => this.rows = data);
     
   }
