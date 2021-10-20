@@ -28,4 +28,13 @@ export class DataService {
   getPage(pageNumber: number): Observable<any>{
     return of(this.pages[pageNumber]);
   }
+
+  getTotalItems(): number{
+      let totalNumber = 0;
+      this.pages.forEach((element: []) => {
+        totalNumber +=element.length;
+      });
+
+      return totalNumber;
+  }
 }

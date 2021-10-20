@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   constructor(private dataService:DataService){
     this.page.pageNumber = 0;
     this.page.size = 3;
-    this.page.totalElements = 8;
+    this.page.totalElements = this.dataService.getTotalItems();
   }
 
   ngOnInit(){
