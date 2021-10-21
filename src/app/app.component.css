@@ -1,0 +1,4 @@
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+    background-color: rgba(228, 27, 27, 0.6) !important;
+    font-weight: normal; }

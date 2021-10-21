@@ -21,8 +21,8 @@ export class EmployeService implements OnInit{
     return this.http.get(this.apiUrl+'/employes/pages/'+pageNumber);
   }
 
-  loadTotalPagesNumber(): Observable<any>{
-    return this.http.get(this.apiUrl+'/employes/pages/nbr-pages');
+  loadTotalNumberOfEmployees(): Observable<any>{
+    return this.http.get(this.apiUrl+'/employes/nbr-total');
   }
 
   getEmployeeList(): Employe[]{

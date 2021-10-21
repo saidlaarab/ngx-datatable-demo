@@ -2,3 +2,11 @@
 @import '~@swimlane/ngx-datatable/index.css';
 @import '~@swimlane/ngx-datatable/themes/material.css';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
+
+/*  active page number style */
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+    background-color: rgba(27, 114, 228, 0.8);
+    color:white;
+    font-weight: bold;
+    border-radius: 20px;
+}

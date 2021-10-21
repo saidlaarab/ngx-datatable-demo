@@ -1,7 +1,7 @@
 <h2>Ngx Data Table Demo</h2>
 <br>
 <ngx-datatable
-  class="material"
+  class="material striped"
   [rows]="rows"
   [columns]="columns"
   [columnMode]="'force'"
@@ -15,5 +15,7 @@
   [count]="page.totalElements"
   [limit]="page.size"
   (page)="setPage($event)"
+
+  [messages]="{emptyMessage: '', totalMessage: ''}"
 >
 </ngx-datatable>

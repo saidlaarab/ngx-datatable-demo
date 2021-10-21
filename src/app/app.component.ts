@@ -32,11 +32,11 @@ export class AppComponent implements OnInit{
     console.log("offset of selected page: "+pageInfo.offset);
     
     // load the total number of pages, then the list of employees from DB:
-    this.employeService.loadTotalPagesNumber().subscribe(
-      (totalPages:{nbrPages: number}) => {
-        // Figure out the total number of employees based on the total number of pages:
-        console.info("Total Number of pages: ", totalPages);
-        this.page.totalElements = totalPages.nbrPages * this.page.size; // actually, it is less than this! but this works fine.
+    this.employeService.loadTotalNumberOfEmployees().subscribe(
+      (totalNbr:number) => {
+        // Set the total numbers of rows:
+        console.info("Total Number of rows: ", totalNbr);
+        this.page.totalElements = totalNbr;
         // Get page of employees:
         this.employeService.loadEmployeePage(pageInfo.offset+1).subscribe(
           (liste:any) =>{
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit{
           error => console.log("something went wrong while loading employee list!")  
         );
       },
-      error => console.log("something went wrong while loading total number of pages!") 
+      error => console.log("something went wrong while loading total number of employees!") 
     );
 
   }
