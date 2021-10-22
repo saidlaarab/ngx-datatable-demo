@@ -1,5 +1,5 @@
 # Ngx Datatable Demo
-this a project to learn how to use the `angular-based` library ngx-datatable.
+This a project is aimed to sum up what I learned on `angular-based` library ngx-datatable.
 
 ## nxg-datatable attributes:
 `offset` : the index of the selected page (start from zero!)
