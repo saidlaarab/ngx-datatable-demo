@@ -22,32 +22,33 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     // size of each page:
     this.page.size = 10;
-    // set the selected page to the first page:
-    this.setPage({offset: 0});
+    // get the total number of employees:
+    this.employeService.loadTotalNumberOfEmployees().subscribe(
+      (totalNbr:number) => {
+         this.page.totalElements = totalNbr;
+         // set the selected page to the first page:
+         this.setPage({offset: 0});
+      },
+      error => {
+         console.log('something wend wrong while fetching the total number of employees!');
+      }
+    );
   }
 
   setPage(pageInfo:any){
     // get the page number:
-    this.page.pageNumber = pageInfo.offset;
-    console.log("offset of selected page: "+pageInfo.offset);
+    const pageOffset = pageInfo.offset;
+    this.page.pageNumber = pageOffset;
+
+    console.log("offset of selected page: "+pageOffset);
     
     // load the total number of pages, then the list of employees from DB:
-    this.employeService.loadTotalNumberOfEmployees().subscribe(
-      (totalNbr:number) => {
-        // Set the total numbers of rows:
-        console.info("Total Number of rows: ", totalNbr);
-        this.page.totalElements = totalNbr;
-        // Get page of employees:
-        this.employeService.loadEmployeePage(pageInfo.offset+1).subscribe(
-          (liste:any) =>{
-            this.rows = liste;
-            console.log("employee list loaded successfully.");
-          },
-          error => console.log("something went wrong while loading employee list!")  
-        );
+    this.employeService.loadEmployeePage(pageOffset+1).subscribe(
+      (liste:any) =>{
+        this.rows = liste;
+        console.log("employee list loaded successfully.");
       },
-      error => console.log("something went wrong while loading total number of employees!") 
+      error => console.log("something went wrong while loading employee list!")  
     );
-
   }
 }
