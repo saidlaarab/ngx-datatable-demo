@@ -13,7 +13,7 @@ import { HttpParams } from '@angular/common/http';
 export class AppComponent implements OnInit{
   page = new Page();
   rows:Employe[] = [];  
-  columns = [{ prop: 'nomEmploye' }, { name: 'prenomEmploye' }, { name: 'Matricule' }];
+  columns = [{ prop: 'nomEmploye' }, { name: 'Prenom Employe' }, { name: 'Matricule' }];
 
   constructor(private dataService:DataService, private employeService:EmployeService){
     

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,7 +18,9 @@ export class EmployeService implements OnInit{
   }
 
   loadEmployeePage(pageNumber: number): Observable<any>{
-    return this.http.get(this.apiUrl+'/employes/pages/'+pageNumber);
+    const params = new HttpParams().set("pageNbr", pageNumber);
+    
+    return this.http.get(this.apiUrl+'/employes/pages', {params});
   }
 
   loadTotalNumberOfEmployees(): Observable<any>{
